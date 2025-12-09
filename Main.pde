@@ -9,26 +9,17 @@ Also want a life span has one of these variants. bubbles would then self destruc
 */
 void setup() {
   
-  size(700, 700);  
+  size(700, 700);
 }
-
-
-
-
 CircleStore circleStore = new CircleStore();
 
 void draw() {
   
-  float radius;
-  float opp;
-  radius = random(50);
-  opp = random(150, 255);
   background(0);
   
   if (mousePressed){ // mouse is not pressed. draw circles saves from last stroke
-    circleStore.add(mouseX, mouseY, radius, opp);
+    circleStore.add();
   }
-  noStroke();
-  fill(255, 100, 200, opp);
-  circleStore.draw();
+  
+  circleStore.update();
 }
