@@ -1,34 +1,59 @@
-public class CircleStore {
+public class BubbleStore {
   
   private ArrayList<Bubble> bubbleStorage;
+  private Modes mode;
   
-  public CircleStore() {
+  public BubbleStore() {
     
     bubbleStorage = new ArrayList<>();
+    mode = Modes.FREE;
   }
   
   public void add() {
     
-    bubbleStorage.add(new Bubble());
+    //for (int i = 0; i < bubbleStorage.size(); i++) {
+    //  if (bubbleStorage.get(i) != null) {
+    //    bubbleStorage.get(i).setFree();
+    //  }
+    //}
+    Bubble newBubble = new Bubble();
+    newBubble.setMode(mode);
+    bubbleStorage.add(newBubble);
+    println(bubbleStorage.size());
   }
   
   public void update() {
     
-    IntList signalToRemove = new IntList();
-    
+     setMode();
     for (int i = 0; i < bubbleStorage.size(); i++) {
      
       if (bubbleStorage.get(i) != null) {
+        
         if (bubbleStorage.get(i).isAlive()) {
+          
           bubbleStorage.get(i).update();
         } else {
-          signalToRemove.append(i);
+          
+          bubbleStorage.set(i, null);
         }
       }
     }
     
-    for (int i = 0; i < signalToRemove.size(); i++) { // concurency issues. list is being resized when item is removed
-      bubbleStorage.set(signalToRemove.get(i), null);
+  }
+  
+  private void setMode() {
+   
+    if(keyPressed) {
+      if(key == 'f' || key == 'F') {
+        
+        mode = Modes.FREE;
+      } else if (key == 'g' || key == 'G') {
+        
+        mode = Modes.MAGNET;
+      } else if (key == 'p' || key == 'P') {
+        
+        mode = Modes.FREEZE;
+      }
     }
   }
 }

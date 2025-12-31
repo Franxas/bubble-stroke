@@ -1,25 +1,38 @@
 /*
 TODO:
-App is working as it is. Now trying to go from -> using as many lists as the number of 
-variants every single bubble has -> to one single list of bubbles. That means working 
-with a new bubble class storing all those variants as properties. then filling one single
-list with new instances of bubbles. 
-Also want a life span has one of these variants. bubbles would then self destruct ----
----- garbage collector takes care of this?
+-> npw working on diferent app modes. <<<<<<
+
+>>>>>> 'F' - bubbles move freely
+>>>>>> 'G' - bubbles get magnetized to mouse when not drawing
+>>>>>> 'P' - bubbles get frozen. not moving
+
+-> maybe for when in another mode than freely bubbles could freeze thei life span count.
+should create a proj manager class to deal with all this. ------ this half done
+
+--> magnetized mode is very sloppy still. can get much better
+
+-> arrumar o codigo!!!!
+
+-> 
+
 */
 void setup() {
   
   size(700, 700);
 }
-CircleStore circleStore = new CircleStore();
+BubbleStore bubbleStore = new BubbleStore();
 
 void draw() {
   
   background(0);
   
-  if (mousePressed){ // mouse is not pressed. draw circles saves from last stroke
-    circleStore.add();
+  stroke(255, 100);
+  strokeWeight(2);
+  line(0, height * 0.8, width, height * 0.8);
+  
+  if (mousePressed){
+    bubbleStore.add();
   }
   
-  circleStore.update();
+  bubbleStore.update();
 }
