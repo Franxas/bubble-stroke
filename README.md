@@ -1,5 +1,5 @@
 A first try at a Processing exercise.  
-This is bubble stroke tool that allows you to make bubbles appear on your canvas by simply drawing using your mouse.
+This is a bubble stroke tool that allows you to make bubbles appear on your canvas by simply drawing using your mouse.
 
 -> every bubble has a random life span.  
 -> click and drag your mouse to instanciate new bubbles.  
